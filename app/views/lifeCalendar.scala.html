@@ -1,0 +1,25 @@
+@import org.usescala.models.LifeCalendar
+
+@(lifeCalendar: LifeCalendar)(webJarAssets: WebJarAssets)
+
+@index(webJarAssets) {
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>@(lifeCalendar.nodes.length) X @(lifeCalendar.nodes.headOption.map{_.length.toString}.getOrElse("?")) Life Calendar</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <table>
+                @for(row <- lifeCalendar.nodes) {
+                    <tr>
+                        @for(column <- row) {
+                            <td><span class="label label-default">&nbsp;</span></td>
+                        }
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+
+}
